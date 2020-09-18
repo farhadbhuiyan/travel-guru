@@ -32,47 +32,47 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     firebase.auth().signInWithPopup(googleProvider)
-    .then(result => {
-      const { displayName, email } = result.user;
-      const signedInUser = { name: displayName, email: email };
-      setLoggedInUser(signedInUser);
-      history.replace(from);
-    }).catch(error => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+      .then(result => {
+        const { displayName, email } = result.user;
+        const signedInUser = { name: displayName, email: email };
+        setLoggedInUser(signedInUser);
+        history.replace(from);
+      }).catch(error => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
 
   }
 
   const handleFacebookSignIn = () => {
     firebase.auth().signInWithPopup(fbProvider)
-    .then(function (result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      const { displayName, email } = result.user;
-      const signedInUser = { name: displayName, email: email };
-      setLoggedInUser(signedInUser);
-      history.replace(from);
-      console.log(user);
-      // ...
-    }).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      console.log(errorMessage);
-      // ...
-    });
+      .then(function (result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        const { displayName, email } = result.user;
+        const signedInUser = { name: displayName, email: email };
+        setLoggedInUser(signedInUser);
+        history.replace(from);
+        console.log(user);
+        // ...
+      }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log(errorMessage);
+        // ...
+      });
 
   }
 
@@ -91,53 +91,53 @@ const Login = () => {
       isFieldValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(event.target.value);
     }
     if (event.target.name === 'password') {
-      isFieldValid = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(event.target.value);
+      isFieldValid = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/.test(event.target.value);
     }
     if (event.target.name === 'confirmPassword') {
-      isFieldValid = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(event.target.value);
+      isFieldValid = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/.test(event.target.value);
     }
-    if(isFieldValid){
-      const newUserInfo = {...user};
+    if (isFieldValid) {
+      const newUserInfo = { ...user };
       newUserInfo[event.target.name] = event.target.value;
       setUser(newUserInfo);
     }
   }
-  const handleFormSubmit = (event) =>{
-    if(newUser && user.email && (user.password === user.confirmPassword)){
+  const handleFormSubmit = (event) => {
+    if (newUser && user.email && (user.password === user.confirmPassword)) {
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-      .then(res =>{
-        const newUserInfo = {...user};
-        newUserInfo.error = '';
-        newUserInfo.success = true;
-        setUser(newUserInfo);
-      })
-      .catch(error => {
-        // Handle Errors here.
-        const errorMessage = error.message;
-        const newUserInfo = {...user};
-        newUserInfo.error = errorMessage;
-        newUserInfo.success = false;
-        setUser(newUserInfo);
-        console.log(errorMessage)
-        // ...
-      });
+        .then(res => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          setUser(newUserInfo);
+        })
+        .catch(error => {
+          // Handle Errors here.
+          const errorMessage = error.message;
+          const newUserInfo = { ...user };
+          newUserInfo.error = errorMessage;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+          console.log(errorMessage)
+          // ...
+        });
     }
-    if(!newUser && user.email && user.password ){
+    if (!newUser && user.email && user.password) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-      .then(res =>{
-        const newUserInfo = {...user};
-        newUserInfo.error = '';
-        newUserInfo.success = true;
-        setUser(newUserInfo);
-      })
-      .catch(error =>{
-        const errorMessage = error.message;
-        const newUserInfo = {...user};
-        newUserInfo.error = errorMessage;
-        newUserInfo.success = false;
-        setUser(newUserInfo);
-        console.log(errorMessage)
-      });
+        .then(res => {
+          const newUserInfo = { ...user };
+          newUserInfo.error = '';
+          newUserInfo.success = true;
+          setUser(newUserInfo);
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          const newUserInfo = { ...user };
+          newUserInfo.error = errorMessage;
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+          console.log(errorMessage)
+        });
     }
     event.preventDefault();
   }
@@ -162,19 +162,19 @@ const Login = () => {
           <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
           <small>Error Message...</small>
         </div>}
-          <div className="form-field">
-            <input name="email" type="email" onBlur={handleInput} placeholder="Email" id="email" />
-            <i className="fa fa-check-circle" aria-hidden="true"></i>
-            <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-            <small>Error Message...</small>
-          </div>
+        <div className="form-field">
+          <input name="email" type="email" onBlur={handleInput} placeholder="Email" id="email" />
+          <i className="fa fa-check-circle" aria-hidden="true"></i>
+          <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <small>Error Message...</small>
+        </div>
 
-          <div className="form-field">
-            <input name="password" type="password" onBlur={handleInput} placeholder="Passowrd" id="password" />
-            <i className="fa fa-check-circle" aria-hidden="true"></i>
-            <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-            <small>Error Message...</small>
-          </div>
+        <div className="form-field">
+          <input name="password" type="password" onBlur={handleInput} placeholder="Passowrd" id="password" />
+          <i className="fa fa-check-circle" aria-hidden="true"></i>
+          <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <small>Error Message...</small>
+        </div>
 
         {newUser && <div className="form-field">
           <input name="confirmPassword" type="password" onBlur={handleInput} placeholder="Confrim Passowrd" id="confirm-password" />
@@ -188,12 +188,12 @@ const Login = () => {
         {
           newUser
             ?
-             <small>Already have an account?<input type="button" onClick={() => setNewUser(!newUser)} value="Login"/> </small>
+            <small>Already have an account?<input type="button" onClick={() => setNewUser(!newUser)} value="Login" /> </small>
             :
-             <small>Don't have an account? <input type="button" onClick={() => setNewUser(!newUser)} value="Create an account"/></small>
+            <small>Don't have an account? <input type="button" onClick={() => setNewUser(!newUser)} value="Create an account" /></small>
         }
-        <p>{user.error}</p>
-         {user.success && <p>User {newUser ? 'Created' : 'LogedIn'} successfuly</p>}
+        <p style={{color: 'red'}}>{user.error}</p>
+        {user.success && <p>User {newUser ? 'Created' : 'LogedIn'} successfuly</p>}
       </form>
       <small>Or</small>
       <div>
