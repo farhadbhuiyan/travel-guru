@@ -1,0 +1,39 @@
+.background{
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../images/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -82px;
+}
+.home-content{
+  padding-top: 200px;
+  color: #fff;
+  display: flex;
+}
+.place-details h1{
+  text-align: center;
+  font-size: 68px;
+  text-transform: uppercase;
+}
+.place-details h5{
+  text-align: justify;
+  margin-left: 30px;
+}
+.title{
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700px;
+}
+.card{
+  width: 270px;
+  height: 414px;
+}
+.card:hover{
+  border: 4px solid #FBBC04;
+}
+.place-details .button{
+  margin-left: 200px;
+  margin-top: 20px;
+}

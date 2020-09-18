@@ -1,0 +1,101 @@
+
+.form-container{
+  font-family: 'Montserrat', sans-serif;
+  width: 570px;
+  height: 591px;
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+}
+.form{
+  border-radius: 4px;
+  border: 1px solid #ABABAB;
+  padding: 30px 40px;
+}
+.header h2{
+  text-align: left;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.form-field{
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-field input{
+  display: block;
+  padding: 10px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom: 2px solid #C5C5C5;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+::placeholder {
+  color: #000;
+  font-weight: 600;
+}
+
+
+.form-field i{
+  visibility: hidden;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.form-field.succes i.fa-check-circle{
+  color: #2ecc71;
+  visibility: none;
+}
+
+.form-field.error i.fa-exclamation-circle{
+  color: #e74c3c;
+  visibility: none;
+}
+
+.form-field small{
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.form-f.form-field small{
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form .submit-button{
+  background-color: #F9A51A;
+  border: 2px solid #F9A51A;
+  padding: 10px;
+  color: #000;
+  display: block;
+  width: 100%;
+}
+.social-login{
+  display: flex;
+  border: 1px solid #C7C7C7;
+  border-radius: 57px;
+  width: 80%;
+  margin: auto;
+}
+.social-login p{
+  margin-top: 10px;
+  padding-left: 75px;
+}
+.social-login .facebook-icon{
+  width: 37px;
+  height: 37px;
+  margin: 7px;
+}
+.social-login .google-icon{
+  width: 31px;
+  height: 31.74px;
+  margin: 9px;
+}

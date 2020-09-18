@@ -1,4 +1,21 @@
 .site-logo{
   width: 120px;
   height: 56px;
+  color: #fff;
+}
+.nav-bar{
+  background: transparent;
+}
+.search-bar{
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+.nav-item Nav.link{
+  color: #fff !important;
+}
+.button{
+  width: 104px;
+  height: 44px;
+  background: #F9A51A !important;
+  color: #000 !important;
+  border: none !important;
 }
